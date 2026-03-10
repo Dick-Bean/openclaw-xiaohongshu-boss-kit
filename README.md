@@ -2,6 +2,8 @@
 
 An OpenClaw / ClawX workflow kit for Xiaohongshu research and browser-assisted collection.
 
+![OpenClaw Xiaohongshu Boss Kit Cover](./docs/cover-banner.svg)
+
 This project packages a boss-worker architecture for people who want:
 
 - a natural-language command layer
