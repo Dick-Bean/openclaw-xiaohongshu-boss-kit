@@ -8,6 +8,8 @@ description: |
 
 Use this skill when the user wants help operating websites in a normal browser session on this computer.
 
+Default browser preference for this kit is Google Chrome. Do not default to Microsoft Edge Dev unless the user explicitly asks for it.
+
 This skill is designed for legitimate, user-authorized browsing with manual human checkpoints. It is not for bypassing anti-bot protections or pretending to be a human when a site is explicitly testing for that.
 
 ## Main Idea
