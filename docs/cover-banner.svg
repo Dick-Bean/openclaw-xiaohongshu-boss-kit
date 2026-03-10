@@ -1,0 +1,88 @@
+<svg width="1280" height="640" viewBox="0 0 1280 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="86" y1="40" x2="1194" y2="603" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF7ED"/>
+      <stop offset="0.45" stop-color="#EFF6FF"/>
+      <stop offset="1" stop-color="#F5F3FF"/>
+    </linearGradient>
+    <linearGradient id="cardBoss" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#1D4ED8"/>
+      <stop offset="1" stop-color="#2563EB"/>
+    </linearGradient>
+    <linearGradient id="cardFlow" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#0F766E"/>
+      <stop offset="1" stop-color="#14B8A6"/>
+    </linearGradient>
+    <linearGradient id="cardWorker" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#C2410C"/>
+      <stop offset="1" stop-color="#F97316"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#0F172A" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <rect width="1280" height="640" rx="28" fill="url(#bg)"/>
+  <circle cx="1120" cy="120" r="110" fill="#DBEAFE" fill-opacity="0.7"/>
+  <circle cx="160" cy="548" r="140" fill="#FED7AA" fill-opacity="0.55"/>
+
+  <text x="72" y="108" fill="#0F172A" font-size="44" font-family="Microsoft YaHei, PingFang SC, sans-serif" font-weight="700">
+    OpenClaw Xiaohongshu Boss Kit
+  </text>
+  <text x="72" y="156" fill="#334155" font-size="22" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+    小红书老板-员工工作流套件
+  </text>
+  <text x="72" y="194" fill="#475569" font-size="18" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+    自然语言任务理解 · OpenProse 调度 · Chrome 会话执行 · 人工验证接管 · 结果验收
+  </text>
+
+  <g filter="url(#shadow)">
+    <rect x="72" y="248" width="274" height="168" rx="24" fill="url(#cardBoss)"/>
+    <text x="96" y="296" fill="#FFFFFF" font-size="28" font-family="Microsoft YaHei, PingFang SC, sans-serif" font-weight="700">xiaohongshu-boss</text>
+    <text x="96" y="334" fill="#DBEAFE" font-size="18" font-family="Microsoft YaHei, PingFang SC, sans-serif">理解指令 / 拆任务 / 派员工</text>
+    <text x="96" y="366" fill="#DBEAFE" font-size="18" font-family="Microsoft YaHei, PingFang SC, sans-serif">监控进度 / 校验结果</text>
+    <text x="96" y="398" fill="#DBEAFE" font-size="18" font-family="Microsoft YaHei, PingFang SC, sans-serif">不亲自抓取，负责总调度</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="396" y="248" width="238" height="168" rx="24" fill="url(#cardFlow)"/>
+    <text x="422" y="296" fill="#FFFFFF" font-size="30" font-family="Microsoft YaHei, PingFang SC, sans-serif" font-weight="700">OpenProse</text>
+    <text x="422" y="334" fill="#CCFBF1" font-size="18" font-family="Microsoft YaHei, PingFang SC, sans-serif">把自然语言变成</text>
+    <text x="422" y="366" fill="#CCFBF1" font-size="18" font-family="Microsoft YaHei, PingFang SC, sans-serif">可执行工作流</text>
+    <text x="422" y="398" fill="#CCFBF1" font-size="18" font-family="Microsoft YaHei, PingFang SC, sans-serif">支持暂停 / 继续 / 重试</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="684" y="248" width="524" height="242" rx="24" fill="#FFFFFF"/>
+    <text x="714" y="294" fill="#0F172A" font-size="28" font-family="Microsoft YaHei, PingFang SC, sans-serif" font-weight="700">员工层</text>
+
+    <rect x="714" y="320" width="214" height="66" rx="18" fill="#FFF7ED"/>
+    <text x="732" y="348" fill="#9A3412" font-size="20" font-family="Microsoft YaHei, PingFang SC, sans-serif" font-weight="700">xiaohongshu-suite</text>
+    <text x="732" y="372" fill="#9A3412" font-size="15" font-family="Microsoft YaHei, PingFang SC, sans-serif">搜索 / 排序 / 详情补采 / 评论话题</text>
+
+    <rect x="950" y="320" width="228" height="66" rx="18" fill="#EFF6FF"/>
+    <text x="968" y="348" fill="#1D4ED8" font-size="20" font-family="Microsoft YaHei, PingFang SC, sans-serif" font-weight="700">browser-assist</text>
+    <text x="968" y="372" fill="#1D4ED8" font-size="15" font-family="Microsoft YaHei, PingFang SC, sans-serif">默认 Google Chrome 会话控制</text>
+
+    <rect x="714" y="404" width="214" height="66" rx="18" fill="#F5F3FF"/>
+    <text x="732" y="432" fill="#6D28D9" font-size="20" font-family="Microsoft YaHei, PingFang SC, sans-serif" font-weight="700">windows-ops</text>
+    <text x="732" y="456" fill="#6D28D9" font-size="15" font-family="Microsoft YaHei, PingFang SC, sans-serif">CSV / Markdown / 桌面导出</text>
+
+    <rect x="950" y="404" width="228" height="66" rx="18" fill="#ECFCCB"/>
+    <text x="968" y="432" fill="#3F6212" font-size="20" font-family="Microsoft YaHei, PingFang SC, sans-serif" font-weight="700">human checkpoint</text>
+    <text x="968" y="456" fill="#3F6212" font-size="15" font-family="Microsoft YaHei, PingFang SC, sans-serif">登录 / 验证码 / 2FA 由你手动处理</text>
+  </g>
+
+  <path d="M347 332H383" stroke="#64748B" stroke-width="8" stroke-linecap="round"/>
+  <path d="M638 332H670" stroke="#64748B" stroke-width="8" stroke-linecap="round"/>
+  <path d="M663 320L684 332L663 344" stroke="#64748B" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M376 320L396 332L376 344" stroke="#64748B" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <rect x="72" y="500" width="1136" height="88" rx="20" fill="#0F172A"/>
+  <text x="102" y="536" fill="#FFFFFF" font-size="24" font-family="Microsoft YaHei, PingFang SC, sans-serif" font-weight="700">
+    核心理念
+  </text>
+  <text x="102" y="570" fill="#CBD5E1" font-size="18" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+    不是绕过反爬虫，而是在你的真实浏览器环境里，像网页副驾驶一样完成重复劳动；遇到必须证明你是人的步骤，就暂停交给你。
+  </text>
+</svg>
