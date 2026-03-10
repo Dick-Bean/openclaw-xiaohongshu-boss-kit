@@ -1,0 +1,6 @@
+interface:
+  display_name: "Xiaohongshu Safe"
+  short_description: "Collect Xiaohongshu data in your Chrome session, pause for human checks, and export clean tables."
+  brand_color: "#EF4444"
+  default_prompt: "Use $xiaohongshu-safe to collect visible Xiaohongshu results in the user's Chrome session. Pause for login or human verification, then continue after the user confirms. Normalize Chinese engagement metrics and export a table to the desktop."
+

@@ -1,0 +1,5 @@
+interface:
+  display_name: "Browser Assist"
+  short_description: "Browse with human checkpoints: you handle verification, it continues the task."
+  brand_color: "#F59E0B"
+  default_prompt: "Use $browser-assist for browser tasks on this PC. If login or human verification appears, stop and wait for the user, then continue after confirmation."

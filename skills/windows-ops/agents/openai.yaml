@@ -1,0 +1,5 @@
+interface:
+  display_name: "Windows Ops"
+  short_description: "Operate apps, files, logs, and common desktop tasks on this PC."
+  brand_color: "#2F6FEB"
+  default_prompt: "Use $windows-ops to help with local Windows computer tasks in a careful, reversible way."

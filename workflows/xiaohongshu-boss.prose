@@ -1,0 +1,126 @@
+# Xiaohongshu boss workflow for instruction parsing, delegation, monitoring, and validation.
+
+input objective: "Describe the Xiaohongshu mission in natural language."
+input output_path: "Where should exported files go?"
+
+agent boss-planner:
+  model: sonnet
+  persist: true
+  prompt: """
+    You are the Xiaohongshu boss planner.
+    Convert the user's objective into a structured mission.
+    Output JSON with:
+    - keyword_or_subject
+    - time_window
+    - ranking_rule
+    - target_count
+    - detail_layer
+    - output_format
+    - output_path
+    - filename_prefix
+    - likely_human_checkpoints
+    - worker_plan
+    - validation_checks
+    Keep assumptions conservative and explicit.
+  """
+
+agent xhs-worker:
+  model: sonnet
+  prompt: """
+    You are the Xiaohongshu specialist worker.
+    Execute the structured mission using the existing worker stack:
+    - xiaohongshu-suite for domain execution
+    - browser-assist for browser continuation
+    - windows-ops for local output placement
+
+    Rules:
+    - Prefer the user's authenticated Chrome session.
+    - Never bypass anti-bot or human verification.
+    - If a checkpoint appears, stop and return a checkpoint status.
+    - Keep output filenames prefixed with the mission keyword or subject.
+    - On Windows, prefer this export command for ranked collection runs:
+      powershell -ExecutionPolicy Bypass -File "./skills/xiaohongshu-suite/scripts/run_xhs_collect.ps1" -Keyword "<keyword>" -Limit <count> -DetailLimit <detail_limit>
+
+    Return JSON with:
+    - status
+    - files
+    - checkpoints_seen
+    - assumptions
+    - worker_notes
+    - verification_hints
+  """
+
+agent boss-monitor:
+  model: sonnet
+  persist: true
+  prompt: """
+    You are the Xiaohongshu boss monitor.
+    Check whether the worker is staying aligned with the original mission.
+    Look for:
+    - wrong keyword or subject
+    - wrong ranking rule
+    - wrong output naming
+    - missing detail layer
+    - human checkpoints not surfaced clearly
+
+    Return a concise monitoring verdict with status, findings, and next action.
+  """
+
+agent validator:
+  model: sonnet
+  prompt: """
+    You validate the final output against the original mission.
+    Confirm:
+    - the keyword or subject matches
+    - the ranking rule matches
+    - the target count is satisfied or explained
+    - filenames begin with the correct prefix
+    - any best-effort limitations are disclosed
+
+    Return JSON with:
+    - pass
+    - matched_requirements
+    - mismatches
+    - recommended_next_step
+  """
+
+let mission = session: boss-planner
+  prompt: "Translate the user's objective into a structured Xiaohongshu mission."
+  context: { objective, output_path }
+
+let preflight_monitor = session: boss-monitor
+  prompt: "Review the planned mission before execution starts."
+  context: mission
+
+if **the mission requires login, CAPTCHA, slider verification, 2FA, or any human checkpoint before collection can continue**:
+  let checkpoint = session "Explain the human checkpoint clearly and pause the workflow."
+    context: { mission, preflight_monitor }
+  output final = session "Return a boss report that pauses for human action and explains how to resume."
+    context: { mission, checkpoint, preflight_monitor }
+else:
+  try:
+    let execution = session: xhs-worker
+      prompt: "Execute the mission, delegate to the worker stack, and return structured status."
+      context: mission
+
+    let execution_monitor = session: boss-monitor
+      prompt: "Check whether the worker execution stayed aligned with the mission."
+      context: { mission, execution }
+
+    let review = session: validator
+      prompt: "Validate the worker output against the original mission."
+      context: { mission, execution, execution_monitor }
+
+    if **the validation passes and no required stage is missing**:
+      output final = session "Produce the final boss report with what was done, which worker handled it, the output path, and any limitations."
+        context: { mission, execution, execution_monitor, review }
+    else:
+      output final = session "Produce a corrective boss report that explains what mismatched, what needs to be retried, and which worker should be re-run."
+        context: { mission, execution, execution_monitor, review }
+  catch as err:
+    let failure_review = session: boss-monitor
+      prompt: "Analyze the failure, identify the stage that broke, and propose the safest next step."
+      context: { mission, err }
+
+    output final = session "Produce a failure report for the operator with next actions and resume guidance."
+      context: { mission, err, failure_review }

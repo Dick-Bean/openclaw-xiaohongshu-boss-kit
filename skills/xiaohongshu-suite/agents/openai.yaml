@@ -1,0 +1,6 @@
+interface:
+  display_name: "Xiaohongshu Suite"
+  short_description: "Unified Xiaohongshu workflow: browse, collect, rank, export, and continue after human checks."
+  brand_color: "#DC2626"
+  default_prompt: "Use $xiaohongshu-suite as the main Xiaohongshu specialist. Prefer the user's Chrome session, pause for human verification, collect visible data, normalize engagement metrics, and export a clean table."
+

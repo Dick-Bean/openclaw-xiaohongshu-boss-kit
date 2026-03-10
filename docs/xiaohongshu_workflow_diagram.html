@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>小红书团队工作流程图</title>
+  <style>
+    @page { size: A4 landscape; margin: 14mm; }
+    body {
+      font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+      color: #14213d;
+      margin: 0;
+      background: #ffffff;
+    }
+    h1 {
+      margin: 0 0 8px 0;
+      font-size: 28px;
+      color: #0b3d91;
+    }
+    .sub {
+      margin-bottom: 18px;
+      color: #4f5d75;
+      font-size: 13px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.9fr 0.9fr 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+    .col {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .box {
+      border: 2px solid #cbd5e1;
+      border-radius: 14px;
+      padding: 10px 12px;
+      background: #f8fafc;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+    }
+    .box h2 {
+      margin: 0 0 8px 0;
+      font-size: 17px;
+    }
+    .box p {
+      margin: 0;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+    .boss { background: #eef6ff; border-color: #60a5fa; }
+    .flow { background: #f0fdf4; border-color: #4ade80; }
+    .worker { background: #fff7ed; border-color: #fb923c; }
+    .check { background: #fdf2f8; border-color: #f472b6; }
+    .output { background: #f5f3ff; border-color: #a78bfa; }
+    ul {
+      margin: 0;
+      padding-left: 18px;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+    .arrow {
+      text-align: center;
+      font-size: 22px;
+      color: #64748b;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .footer {
+      margin-top: 18px;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 10px;
+      font-size: 12px;
+      color: #475569;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+    }
+    .mini {
+      border-radius: 12px;
+      background: #f8fafc;
+      padding: 10px 12px;
+      border: 1px solid #e2e8f0;
+    }
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      background: #dbeafe;
+      color: #1d4ed8;
+      margin-bottom: 6px;
+    }
+  </style>
+</head>
+<body>
+  <h1>小红书团队完整工作流程图</h1>
+  <div class="sub">适用于 ClawX + OpenClaw + OpenProse + Chrome Relay 的“老板调度 / 员工执行 / 人工检查接管”模式</div>
+
+  <div class="grid">
+    <div class="col">
+      <div class="box boss">
+        <h2>1. 用户输入层</h2>
+        <p>你在 ClawX 中输入自然语言任务，例如：采集 2026 服装、近 30 天、按点赞前 20、补评论区话题、导出到桌面。</p>
+      </div>
+      <div class="arrow">↓</div>
+      <div class="box boss">
+        <h2>2. xiaohongshu-boss 指令理解层</h2>
+        <ul>
+          <li>理解关键词 / 主题</li>
+          <li>识别时间窗、排序规则、数量</li>
+          <li>识别是否需要评论区、主页、趋势等细节层</li>
+          <li>判断输出格式和命名规则</li>
+          <li>预判是否会触发登录、人机验证、验证码</li>
+        </ul>
+      </div>
+      <div class="arrow">↓</div>
+      <div class="box boss">
+        <h2>3. Mission 结构化</h2>
+        <ul>
+          <li>keyword_or_subject</li>
+          <li>time_window</li>
+          <li>ranking_rule</li>
+          <li>target_count</li>
+          <li>detail_layer</li>
+          <li>output_path</li>
+          <li>filename_prefix</li>
+          <li>validation_checks</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="box flow">
+        <h2>4. OpenProse 工作流引擎</h2>
+        <ul>
+          <li>把自然语言任务变成可执行流程</li>
+          <li>按阶段派工，而不是让老板亲自做</li>
+          <li>支持暂停、继续、重试、验收</li>
+        </ul>
+      </div>
+      <div class="arrow">↓</div>
+      <div class="box flow">
+        <h2>5. 派工阶段</h2>
+        <ul>
+          <li>把小红书任务分给专项员工</li>
+          <li>把网页动作分给浏览器员工</li>
+          <li>把导出与文件落地分给本地文件员工</li>
+        </ul>
+      </div>
+      <div class="arrow">↓</div>
+      <div class="box check">
+        <h2>6. 人工 Checkpoint 判断</h2>
+        <ul>
+          <li>是否登录</li>
+          <li>是否出现滑块 / 验证码 / Google 人类检查</li>
+          <li>是否出现 2FA 或强制身份确认</li>
+        </ul>
+      </div>
+      <div class="arrow">↓</div>
+      <div class="box check">
+        <h2>7. 暂停与恢复</h2>
+        <p>如果遇到验证，流程暂停，交给你手动完成。你处理完成后，系统从断点继续，而不是整轮重来。</p>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="box worker">
+        <h2>8. xiaohongshu-suite 专项员工</h2>
+        <ul>
+          <li>搜索关键词</li>
+          <li>采集可见笔记卡片</li>
+          <li>提取标题 / 作者 / 点赞 / 链接</li>
+          <li>点赞归一化</li>
+          <li>Top N 排序</li>
+          <li>详情补采</li>
+          <li>评论区话题关键词提取</li>
+        </ul>
+      </div>
+      <div class="box worker">
+        <h2>9. browser-assist 浏览器员工</h2>
+        <ul>
+          <li>接管 Chrome 当前登录会话</li>
+          <li>打开搜索页</li>
+          <li>点击笔记卡片进入详情</li>
+          <li>滚动页面加载评论</li>
+          <li>遇到验证时暂停并等待人工处理</li>
+        </ul>
+      </div>
+      <div class="box worker">
+        <h2>10. windows-ops 本地文件员工</h2>
+        <ul>
+          <li>生成 CSV</li>
+          <li>生成 Markdown 总结</li>
+          <li>保存到桌面</li>
+          <li>自动按关键词命名文件</li>
+          <li>例如：2026服装_top20.csv</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="box check">
+        <h2>11. boss-monitor 监工层</h2>
+        <ul>
+          <li>检查有没有跑错关键词</li>
+          <li>检查排序规则是否一致</li>
+          <li>检查数量是否满足</li>
+          <li>检查评论细节有没有缺失</li>
+          <li>检查文件名前缀是否匹配任务主题</li>
+          <li>检查是否抓到了错误页面</li>
+        </ul>
+      </div>
+      <div class="arrow">↓</div>
+      <div class="box output">
+        <h2>12. validator 验收层</h2>
+        <ul>
+          <li>核对输出是否符合原始命令</li>
+          <li>不通过则回退到对应员工重跑</li>
+          <li>通过才允许老板汇报完成</li>
+        </ul>
+      </div>
+      <div class="arrow">↓</div>
+      <div class="box output">
+        <h2>13. 最终交付层</h2>
+        <ul>
+          <li>CSV 表格</li>
+          <li>Markdown 总结</li>
+          <li>文件路径说明</li>
+          <li>限制与 best-effort 说明</li>
+          <li>下一步建议</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="mini">
+      <div class="badge">核心思路</div>
+      <div>不是去硬绕过反爬虫，而是让系统像你的网页副驾驶一样，在你的真实浏览器会话里帮你完成重复劳动。</div>
+    </div>
+    <div class="mini">
+      <div class="badge">人工参与点</div>
+      <div>登录、滑块、验证码、Google 人类检查、2FA 这些都交给你，系统只负责在你处理完后继续执行。</div>
+    </div>
+    <div class="mini">
+      <div class="badge">当前边界</div>
+      <div>评论区和详情页属于 best-effort，平台个性化推荐会影响显示内容，但不影响这套流程作为真实会话辅助自动化使用。</div>
+    </div>
+  </div>
+</body>
+</html>
