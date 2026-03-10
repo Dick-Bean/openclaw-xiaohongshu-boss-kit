@@ -34,6 +34,7 @@ Most browser-heavy platforms are not a good fit for fully detached scraping.
 This kit is built around a safer and more practical model:
 
 - use the operator's real browser session
+- use Google Chrome as the default browser runtime
 - let the boss turn a prompt into a mission
 - delegate work to specialized workers
 - pause for login, CAPTCHA, slider, 2FA, or other human verification
@@ -90,7 +91,8 @@ Core execution chain:
 1. Copy the skill folders under `skills/` into your OpenClaw skills directory.
 2. Copy `workflows/xiaohongshu-boss.prose` into a workspace path you will use with ClawX.
 3. Enable the OpenProse plugin in OpenClaw.
-4. Use your normal Chrome session and OpenClaw browser relay.
+4. Use your normal Google Chrome session and OpenClaw browser relay.
+5. Treat Chrome as the default browser for all web tasks in this kit.
 
 You can also use:
 
