@@ -34,7 +34,8 @@ agent xhs-worker:
     - windows-ops for local output placement
 
     Rules:
-    - Prefer the user's authenticated Chrome session.
+    - Prefer the user's authenticated Google Chrome session.
+    - Treat Google Chrome as the default browser runtime for all web tasks in this workflow.
     - Never bypass anti-bot or human verification.
     - If a checkpoint appears, stop and return a checkpoint status.
     - Keep output filenames prefixed with the mission keyword or subject.
